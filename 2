@@ -1,0 +1,77 @@
+#include <stddef.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+int mystrlen(const char *str) {
+    int length = 0;
+    while (*str != '\0') {
+        length++;
+        str++;
+    }
+    return length;
+}
+
+char *mystrcpy(char *str1, const char *str2) {
+    char *original = str1;
+    while ((*str1++ = *str2++) != '\0');
+    return original;
+}
+
+char *mystrcat(char *str1, const char *str2) {
+    char *original = str1;
+    while (*str1 != '\0') {
+        str1++;
+    }
+    while ((*str1++ = *str2++) != '\0');
+    return original;
+}
+
+int mystrcmp(const char *str1, const char *str2) {
+    while (*str1 && (*str1 == *str2)) {
+        str1++;
+        str2++;
+    }
+    return *(unsigned char *)str1 - *(unsigned char *)str2;
+}
+
+int StringToNumber(char *str) {
+    return atoi(str);
+}
+
+char *NumberToString(int number) {
+    char *buffer = (char *)malloc(20 * sizeof(char));
+    if (buffer == NULL) {
+        return NULL;
+    }
+    sprintf(buffer, "%d", number);
+    return buffer;
+}
+
+char *Uppercase(char *str1) {
+    char *original = str1;
+    while (*str1) {
+        *str1 = toupper((unsigned char)*str1);
+        str1++;
+    }
+    return original;
+}
+
+char *Lowercase(char *str1) {
+    char *original = str1;
+    while (*str1) {
+        *str1 = tolower((unsigned char)*str1);
+        str1++;
+    }
+    return original;
+}
+
+char *mystrrev(char *str) {
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        char temp = str[i];
+        str[i] = str[len - i - 1];
+        str[len - i - 1] = temp;
+    }
+    return str;
+}
